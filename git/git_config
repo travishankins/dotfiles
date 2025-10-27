@@ -1,0 +1,44 @@
+[user]
+    name = Travis Hankins
+    email = 53796165+travishankins@users.noreply.github.com
+
+[core]
+    editor = code --wait      # or "nano", "vim", etc.
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+
+[init]
+    defaultBranch = main
+
+[color]
+    ui = auto
+
+[alias]
+    st = status -sb
+    co = checkout
+    br = branch
+    cm = commit -m
+    amend = commit --amend --no-edit
+    lg = log --oneline --graph --decorate --all
+    pl = pull --rebase
+    ps = push
+    df = diff
+    last = log -1 HEAD
+
+[push]
+    default = current
+
+[pull]
+    rebase = true
+
+[merge]
+    ff = only
+
+[credential]
+    helper = osxkeychain    # macOS Keychain
+
+[github]
+    user = travishankins
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
