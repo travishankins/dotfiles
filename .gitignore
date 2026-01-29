@@ -1,8 +1,0 @@
-# macOS
-.DS_Store
-
-# Backup files created by install script
-*.backup
-
-# Don't track the dracula theme repo (it's cloned)
-dracula-theme/
