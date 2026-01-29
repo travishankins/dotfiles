@@ -1,0 +1,52 @@
+# .zshenv - Environment Variables
+# This file is always sourced, before .zshrc
+
+# ==================== Editor ====================
+export EDITOR="code --wait"
+export VISUAL="code --wait"
+
+# ==================== Homebrew ====================
+# Set up Homebrew environment (for M1/M2/M3 Macs)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# ==================== PATH ====================
+# Add local bin directories
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+
+
+# ==================== Azure ====================
+# Azure CLI
+export AZURE_CONFIG_DIR="$HOME/.azure"
+
+# ==================== History ====================
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+
+# ==================== Terraform ====================
+# Plugin cache directory
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
+# Disable telemetry and version checks (faster CLI)
+export CHECKPOINT_DISABLE=1
+
+# Default log level (uncomment for debugging)
+# export TF_LOG=INFO
+# export TF_LOG_PATH="$HOME/.terraform.d/terraform.log"
+
+# Azure Terraform provider settings
+export ARM_SKIP_PROVIDER_REGISTRATION=false
+
+# TFLint configuration
+export TFLINT_CONFIG="$HOME/.tflint.hcl"
+
+# ==================== Other Tools ====================
+# Set language
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Colorize ls output
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
