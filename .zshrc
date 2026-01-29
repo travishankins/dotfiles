@@ -42,4 +42,3 @@ alias brewdump="brew bundle dump --force --file=~/Developer/dotfiles/Brewfile"
 
 # ==================== Dotfiles ====================
 alias dotfiles="cd ~/Developer/dotfiles"
-alias linkdotfiles="ln -sf ~/Developer/dotfiles/azure-config ~/.azure/config && ln -sf ~/Developer/dotfiles/git/git_config ~/.gitconfig && ln -sf ~/Developer/dotfiles/git/gitignore_global ~/.gitignore_global && ln -sf ~/Developer/dotfiles/git/ssh_config ~/.ssh/config"
