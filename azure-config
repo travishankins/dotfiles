@@ -1,0 +1,38 @@
+# Azure CLI Configuration
+# Symlink this to ~/.azure/config
+#
+# Set with: az config set <section>.<key>=<value>
+# List with: az config list
+
+[core]
+# Disable telemetry collection
+collect_telemetry = no
+
+# Default output format (json, table, yaml, jsonc, tsv)
+output = table
+
+# Show warnings about breaking changes and deprecations
+only_show_errors = no
+
+# Disable automatic installation of missing extensions
+auto_install_use_dynamic = yes
+
+[defaults]
+# Set your preferred default location for resources
+# Common options: eastus, westus2, centralus, westeurope, etc.
+# location = eastus2
+
+# Set default resource group (uncomment and set when you have a common one)
+# group = my-default-rg
+
+[extension]
+# Auto-update extensions
+use_dynamic_install = yes_without_prompt
+
+[logging]
+# Enable logging for troubleshooting (set to yes when debugging)
+enable_log_file = no
+
+[auth]
+# Use web browser for authentication (more secure than device code)
+use_cli_credentials = no
