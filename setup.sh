@@ -1,9 +1,59 @@
 #!/bin/bash
 set -e
 
-echo "🔗 Linking dotfiles..."
+echo "� Dotfiles Setup Script"
+echo "========================="
+echo ""
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Install Homebrew if not present
+if ! command -v brew &> /dev/null; then
+    echo "🍺 Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    
+    # Add Homebrew to PATH for Apple Silicon Macs
+    echo "🔧 Adding Homebrew to PATH..."
+    if [[ $(uname -m) == "arm64" ]]; then
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+        echo 'eval "$(/usr/local/bin/brew shellenv)"' >> ~/.zprofile
+        eval "$(/usr/local/bin/brew shellenv)"
+    fi
+    echo "✅ Homebrew installed!"
+else
+    echo "✅ Homebrew already installed"
+fi
+
+# Install essential tools
+echo ""
+echo "📦 Installing essential tools..."
+
+# Add HashiCorp tap for official Terraform
+if ! brew tap | grep -q hashicorp/tap; then
+    echo "🔧 Adding HashiCorp tap..."
+    brew tap hashicorp/tap
+fi
+
+# Install tools
+tools=(
+    "azure-cli"
+    "hashicorp/tap/terraform"
+    "1password-cli"
+)
+
+for tool in "${tools[@]}"; do
+    if ! brew list "$tool" &> /dev/null; then
+        echo "📦 Installing $tool..."
+        brew install "$tool"
+    else
+        echo "✅ $tool already installed"
+    fi
+done
+
+echo ""
+echo "🔗 Linking dotfiles..."
 
 # Function to create backup if file exists and is not a symlink
 backup_if_exists() {
@@ -46,9 +96,12 @@ safe_symlink "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 safe_symlink "$DOTFILES_DIR/azure-config" "$HOME/.azure/config"
 
 echo ""
-echo "🎉 All dotfiles linked successfully!"
+echo "🎉 Setup complete!"
 echo ""
 echo "📝 Next steps:"
 echo "  • Restart your terminal or run: source ~/.zshrc"
+echo "  • Login to Azure: az login"
+echo "  • Verify Terraform: terraform --version"
+echo "  • Login to 1Password CLI: op signin"
 echo "  • Verify Azure config: az config list"
 echo "  • Verify Git config: git config --list"
