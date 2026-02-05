@@ -1,0 +1,55 @@
+# Nerd Font Preset for Starship
+# ~/.config/starship.toml
+
+# Prompt format
+format = """
+$directory\
+$git_branch\
+$git_status\
+$terraform\
+$azure\
+$cmd_duration\
+$line_break\
+$character"""
+
+[character]
+success_symbol = "[❯](bold #50fa7b)"
+error_symbol = "[❯](bold #ff5555)"
+
+[cmd_duration]
+min_time = 1_000
+format = "took [$duration](bold #f1fa8c)"
+
+[directory]
+read_only = " 󰌾"
+truncation_length = 3
+truncate_to_repo = true
+style = "bold #8be9fd"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = " "
+style = "bold #bd93f9"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold #ff5555"
+format = '([$all_status$ahead_behind]($style) )'
+conflicted = "!"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = ""
+modified = "*"
+staged = ""
+renamed = ""
+deleted = ""
+
+[terraform]
+symbol = "󱁢 "
+style = "bold #bd93f9"
+
+[azure]
+disabled = false
+symbol = "󰠅 "
+style = "bold #8be9fd"

@@ -2,9 +2,20 @@
 Host *
   IdentityAgent ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
+# Docker Node 01 (Mac Mini Intel - arr stack)
+Host docker-node-01
+  HostName 10.0.1.9
+  User travis
+  PreferredAuthentications publickey
+  AddKeysToAgent yes
+
 # GitHub
 Host github.com
   User git
   HostName github.com
   PreferredAuthentications publickey
   AddKeysToAgent yes
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
