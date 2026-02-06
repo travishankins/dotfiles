@@ -4,12 +4,9 @@
 # Prompt format
 format = """
 $directory\
-$git_branch\
 $git_status\
 $terraform\
-$azure\
 $cmd_duration\
-$line_break\
 $character"""
 
 [character]
@@ -48,8 +45,3 @@ deleted = ""
 [terraform]
 symbol = "󱁢 "
 style = "bold #bd93f9"
-
-[azure]
-disabled = false
-symbol = "󰠅 "
-style = "bold #8be9fd"
